@@ -50,19 +50,27 @@ namespace TicketSystem
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
-
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
-
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
+            app.UseTwitterAuthentication(
+               consumerKey: "dHbf6qruV7RcBg8ZuRuXYIevj",
+               consumerSecret: "dZY86L1MGf1ddcQmF8RXR4BqRzSZHi5KI9JnRTeRoTPdgVX7Tk");
+            //   BackchannelCertificateValidator = new CertificateSubjectKeyIdentifierValidator(
+            //    new[]
+            //    {
+            //        "A5EF0B11CEC04103A34A659048B21CE0572D7D47", // VeriSign Class 3 Secure Server CA - G2
+            //        "0D445C165344C1827E1D20AB25F40163D8BE79A5", // VeriSign Class 3 Secure Server CA - G3
+            //        "7FD365A7C2DDECBBF03009F34339FA02AF333133", // VeriSign Class 3 Public Primary Certification Authority - G5
+            //        "39A55D933676616E73A761DFA16A7E59CDE66FAD" // Symantec Class 3 Secure Server CA - G4
+            //    },
             //});
+            app.UseFacebookAuthentication(
+               appId: "1075945062428240",
+               appSecret: "b351502bd4eb2baf08dd12fc8a34578e");
+
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "558261625085-tj9s1uuel2pe73ef673g6dmtbgh8b8r5.apps.googleusercontent.com",
+                ClientSecret = "P_Q9Um0xvUgDQ8egE9xzNWXY"
+            });
         }
     }
 }

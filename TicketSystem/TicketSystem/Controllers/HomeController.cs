@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace TicketSystem.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -19,14 +20,14 @@ namespace TicketSystem.Controllers
 
             return View();
         }
-
+      
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
-
+       [Authorize]
         public ActionResult Merchandise()
         {
             return View();
