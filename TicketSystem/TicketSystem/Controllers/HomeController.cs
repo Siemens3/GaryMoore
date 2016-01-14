@@ -45,7 +45,7 @@ namespace TicketSystem.Controllers
         {
             return View();
         }
-        public ActionResult PastGatherings()
+        public ActionResult LineUp()
         {
             return View();
         }

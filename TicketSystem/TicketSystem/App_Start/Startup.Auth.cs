@@ -50,9 +50,9 @@ namespace TicketSystem
             //    clientId: "",
             //    clientSecret: "");
 
-            app.UseTwitterAuthentication(
-               consumerKey: "dHbf6qruV7RcBg8ZuRuXYIevj",
-               consumerSecret: "dZY86L1MGf1ddcQmF8RXR4BqRzSZHi5KI9JnRTeRoTPdgVX7Tk");
+            //app.UseTwitterAuthentication(
+            //   consumerKey: "dHbf6qruV7RcBg8ZuRuXYIevj",
+            //   consumerSecret: "dZY86L1MGf1ddcQmF8RXR4BqRzSZHi5KI9JnRTeRoTPdgVX7Tk");
             //   BackchannelCertificateValidator = new CertificateSubjectKeyIdentifierValidator(
             //    new[]
             //    {

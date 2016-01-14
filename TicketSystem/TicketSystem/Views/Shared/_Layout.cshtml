@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - The Gathering For Gary</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -14,8 +15,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
-                <img class="img-responsive " style="margin:0 auto" border="0" alt="Logo" src="~/Content/logo3.png">
+             
+                <img class="img-responsive " style="margin:0 auto" border="0" alt="Logo" src="~/Images/logo3.png">
 
             </div>
         </div>
@@ -35,11 +36,11 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("About the Gathering", "Index", "Home")</li>
                         <li>@Html.ActionLink("Merchandise", "Merchandise", "Home")</li>
-                        <li>@Html.ActionLink("Ticket Sales", "", "")</li>
+                        <li>@Html.ActionLink("Ticket Sales", "Index", "PayPal")</li>
                         <li>@Html.ActionLink("Why Brighton", "", "")</li>
-                        <li>@Html.ActionLink("Gary Moore", "", "")</li>
+                        <li>@Html.ActionLink("Gary Moore", "GaryMoore", "Home")</li>
                         <li>@Html.ActionLink("Places of Interest in Brighton", "", "")</li>
-                        <li>@Html.ActionLink("Past Gatherings", "", "")</li>
+                        <li>@Html.ActionLink("Line Up", "LineUp", "Home")</li>
                         <li>@Html.ActionLink("Useful Links", "", "")</li>
                     </ul>
                     @*@Html.Partial("_LoginPartial")*@
@@ -51,7 +52,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - The Gathering For Gary</p>
+            <p id="contentWhiteText">&copy; @DateTime.Now.Year - The Gathering For Gary</p>
         </footer>
     </div>
 

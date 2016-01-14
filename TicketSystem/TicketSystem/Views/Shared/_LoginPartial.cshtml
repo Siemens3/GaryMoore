@@ -1,22 +1,41 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-left" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
+<div class="row">
+    <div class="col-sm-12">
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", style = "background-color:#A9A9A9;" })
+            </li>
+        </ul>
+    </div>
+</div>
+    <br />
+<div class="row">
+    <div class="col-sm-12">
+        <ul class="nav navbar-nav navbar-left">
+            <li style="background-color:#A9A9A9"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    </div>
+</div>
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+<div class="row">
+    <div class="col-sm-4">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "background-color:#A9A9A9;" })</li>
+        </ul>
+    </div>
+    <div class="col-sm-8">
+        <ul class="nav navbar-nav">
+            <li> @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", style = "background-color:#A9A9A9;border-color:black;" }) </li>
+        </ul>
+    </div>
+</div>
 }

@@ -450,7 +450,7 @@ namespace TicketSystem.Controllers
             var callbackUrl = Url.Action("ConfirmEmail", "Account",
                new { userId = userID, code = code }, protocol: Request.Url.Scheme);
             await UserManager.SendEmailAsync(userID, subject,
-               "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+               "Thank you for Registering."+"\n"+" Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
             return callbackUrl;
         }

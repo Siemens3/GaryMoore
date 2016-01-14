@@ -40,3 +40,15 @@ html, body, .container-table {
 .navbar-inverse .navbar-nav > li > a {
     color: yellow;
 }
+
+#contentColour{
+    color:black;
+}
+#contentWhiteText{
+    color:white;
+}
+
+#whiteBg{
+    background-color:white;
+    
+}
