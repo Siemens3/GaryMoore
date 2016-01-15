@@ -16,7 +16,7 @@ namespace TicketSystem.Models
 
             try
             {
-                System.IO.StreamWriter file = new System.IO.StreamWriter(LogDirectoryPath + "\\Error.log", true);
+                System.IO.StreamWriter file = new System.IO.StreamWriter("C:" + "\\Error.log", true);
                 file.WriteLine(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " --> " + lines);
                 file.Close();
             }

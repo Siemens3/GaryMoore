@@ -190,12 +190,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\IdentityContextMigration\201601151433247_initial.cs" />
+    <Compile Include="Migrations\IdentityContextMigration\201601151433247_initial.Designer.cs">
+      <DependentUpon>201601151433247_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\IdentityContextMigration\Configuration.cs" />
+    <Compile Include="Migrations\TicketContextMigration\201601151432407_initial.cs" />
+    <Compile Include="Migrations\TicketContextMigration\201601151432407_initial.Designer.cs">
+      <DependentUpon>201601151432407_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TicketContextMigration\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Configuration.cs" />
+    <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Logger.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PayPalAPI.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -230,7 +241,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <None Include="Properties\PublishProfiles\thegatheringforgary.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -295,19 +305,25 @@
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\Home\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\PayPal\Index.cshtml" />
-    <Content Include="Views\PayPal\PaymentWithCreditCard.cshtml" />
     <Content Include="Views\PayPal\PaymentWithPaypal.cshtml" />
     <Content Include="Views\PayPal\SuccessView.cshtml" />
     <Content Include="Views\PayPal\FailureView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\IdentityContextMigration\201601151433247_initial.resx">
+      <DependentUpon>201601151433247_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TicketContextMigration\201601151432407_initial.resx">
+      <DependentUpon>201601151432407_initial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

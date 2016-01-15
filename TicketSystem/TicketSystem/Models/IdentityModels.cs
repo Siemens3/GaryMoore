@@ -21,8 +21,10 @@ namespace TicketSystem.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("TicketDatabase", throwIfV1Schema: false)
         {
+
+           
         }
 
         public static ApplicationDbContext Create()
