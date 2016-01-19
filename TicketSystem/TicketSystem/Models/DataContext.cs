@@ -9,6 +9,8 @@ namespace TicketSystem.Models
         {
            
         }
-        public DbSet<Order> Orders { get; set; } 
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Error> Errors { get; set; }
+
     }
 }

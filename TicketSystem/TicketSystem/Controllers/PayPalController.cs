@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TicketSystem.Models;
+using TicketSystem.ViewModel;
 
 namespace TicketSystem.Controllers
 {
@@ -23,7 +24,7 @@ namespace TicketSystem.Controllers
 
 
 
-        public ActionResult PaymentWithPaypal(TicketSystem.Models.Order orders)
+        public ActionResult PaymentWithPaypal(OrderView orders)
         {
 
             int totalTicketsNum = orders.AmountOfTickets;
@@ -31,7 +32,7 @@ namespace TicketSystem.Controllers
 
             if(totalTicketsNum > 4)
             {
-                ViewBag.Error = "Sorry there is a maximum of 4 tickets per transaction. Thank you.";
+                ViewBag.Error = "Maximum of 4 tickets per transaction. Thank you.";
                 return View("Index");
             }
 
@@ -41,15 +42,12 @@ namespace TicketSystem.Controllers
             {
                 var ticketAmount = db.Orders.SingleOrDefault();
 
-                if (ticketAmount.AmountOfTickets > totalTicketsNum)
+                if (ticketAmount.AmountOfTickets < totalTicketsNum)
                 {
                     ViewBag.Error = "There is " + ticketAmount.AmountOfTickets + " Ticekts left.";
 
                     return View("Index");
                 }
-
-                ticketAmount.AmountOfTickets = ticketAmount.AmountOfTickets - totalTicketsNum;
-                db.SaveChanges();
             }
 
 
@@ -57,13 +55,16 @@ namespace TicketSystem.Controllers
 
 
 
-
+          
 
             //getting the apiContext as earlier
             APIContext apiContext = Configuration.GetAPIContext();
 
             try
             {
+                Random rnd = new Random();
+                int prefix = rnd.Next(1, 9999999);
+
                 string payerId = Request.Params["PayerID"];
 
                 if (string.IsNullOrEmpty(payerId))
@@ -144,6 +145,13 @@ namespace TicketSystem.Controllers
                 return View("FailureView");
             }
 
+            using (var db = new DataContext())
+            {
+                var ticketAmount = db.Orders.SingleOrDefault();
+                ticketAmount.AmountOfTickets = ticketAmount.AmountOfTickets - totalTicketsNum;
+                db.SaveChanges();
+            }
+
             return View("SuccessView");
         }
 
@@ -159,17 +167,19 @@ namespace TicketSystem.Controllers
 
         private Payment CreatePayment(APIContext apiContext, string redirectUrl, string totalTicketsNum,string totalCost)
         {
+           // string fees = "0.50";
 
             //similar to credit card create itemlist and add item objects to it
             var itemList = new ItemList() { items = new List<Item>() };
 
             itemList.items.Add(new Item()
             {
-                name = "Ticket",
+                name = "Gary Moore Ticket",
                 currency = "GBP",
-                price = totalCost,
+                price = "20.50",
                 quantity = totalTicketsNum,
-                sku = "sku"
+                sku="Ticket"
+               
             });
 
             var payer = new Payer() { payment_method = "paypal" };
@@ -184,16 +194,16 @@ namespace TicketSystem.Controllers
             // similar as we did for credit card, do here and create details object
             var details = new Details()
             {
-                tax = "0.50",
-                shipping = "0",
-                subtotal = "20.50"
+                fee= "0.00",
+                shipping = "0.00",
+                subtotal = totalCost
             };
 
             // similar as we did for credit card, do here and create amount object
             var amount = new Amount()
             {
                 currency = "GBP",
-                total = "20.50", // Total must be equal to sum of shipping, tax and subtotal.
+                total = totalCost, // Total must be equal to sum of shipping, tax and subtotal.
                 details = details
             };
 

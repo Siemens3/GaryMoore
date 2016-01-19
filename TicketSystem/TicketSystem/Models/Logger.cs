@@ -7,7 +7,7 @@ namespace TicketSystem.Models
 {
     public class Logger
     {
-        public static string LogDirectoryPath = Environment.CurrentDirectory;
+        //public static string LogDirectoryPath = Environment.CurrentDirectory;
 
         public static void Log(String lines)
         {
@@ -16,14 +16,23 @@ namespace TicketSystem.Models
 
             try
             {
-                System.IO.StreamWriter file = new System.IO.StreamWriter("C:" + "\\Error.log", true);
-                file.WriteLine(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " --> " + lines);
-                file.Close();
+                //System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Error.log", true);
+                //file.WriteLine(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " --> " + lines);
+                //file.Close();
+                using (var db = new DataContext())
+                {
+                    Error errors = new Error();
+                    errors.error = lines;
+                    var err = db.Errors.Add(errors);
+                    db.SaveChanges();
+                }
             }
             catch
             {
 
             }
         }
+
+       
     }
 }
